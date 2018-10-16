@@ -6,6 +6,9 @@ var completed = document.getElementById("completed");
 var clear = document.getElementById("clear-completed");
 var all = document.getElementById("all");
 var footer = document.getElementById("footer");
+var k;
+
+
 
 function dem (a){
     var d=0;
@@ -26,6 +29,7 @@ function border(id) {
     var a = document.getElementById(id);
     a.classList.add("border");
     a.classList.remove('border-non');
+    k = id;
 }
 
 function hint() {
@@ -39,7 +43,6 @@ function hint() {
 
 }
 function ht() {
-    // arrayTodo =todolist.children;
     total = dem(arrayTodo);
     document.getElementsByClassName('total')[0].innerHTML= total  + " item";
     if (total == 0) {
@@ -53,7 +56,7 @@ function ht() {
         clear.classList.add("clear-completed")
     }
     else {
-        clear.innerHTML = ""
+        clear.innerHTML = "";
         clear.classList.remove("clear-completed")
     }
 }
@@ -83,18 +86,26 @@ function Add(event) {
     }
 }
 
-todolist.onclick = function(event){
+todolist.onclick = function (event){
    var a =event.target;
    var b =  a.parentElement;
    if (a.tagName == "INPUT") {
         if (a.checked) {
             b.classList.add("check");
+            if( k == "active"){
+                act();
+            }
             ht();
+
         }
         else {
             b.classList.remove("check");
             arrayTodo =todolist.children;
+            if (k == "completed") {
+                comp();
+            }
             ht();
+
         }
     }
     if (a.tagName == "I") {
@@ -131,7 +142,7 @@ all.onclick = function () {
 
 };
 
-active.onclick = function () {
+function act() {
     border("active");
     for (var i = 0; i < arrayTodo.length; i++) {
         if (arrayTodo[i].children[0].checked){
@@ -141,8 +152,13 @@ active.onclick = function () {
             arrayTodo[i].classList.remove("display");
         }
     }
-};
-completed.onclick = function () {
+
+
+}
+
+
+
+function comp() {
     border("completed");
     for (var i = 0; i < arrayTodo.length; i++) {
         if (!arrayTodo[i].children[0].checked){
@@ -152,7 +168,10 @@ completed.onclick = function () {
             arrayTodo[i].classList.remove("display");
         }
     }
-};
+
+}
+
+
 
 clear.onclick = function () {
     var i=0;
