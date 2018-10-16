@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Todo-non_jquery</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <div class="row ">
+                <i class="fas fa-angle-down non" id="select-all"></i>
+                <input id="text" type="text" placeholder="Nhap" name="text" onkeyup="Add(event)" autocomplete="off">
+            </div>
+            <div class="items">
+                <ul>
+                </ul>
+            </div>
+            <div id="footer" class="row footer display">
+                <div class="total flex-1">
+                </div>
+                <div class="row flex-1">
+                    <div id="all" class="act flex-1 border-non">
+                        all
+                    </div>
+                    <div id="active" class="act flex-1 border-non">
+                        active
+                    </div>
+                    <div id="completed" class="act flex-1 border-non">
+                        completed
+                    </div>
+                </div>
+
+                <div id="clear-completed" class="clear-completed flex-1">
+                    clear completed
+                </div>
+            </div>
+        </div>
+        <p id="demo"></p>
+    </div>
+    <script src="javascript.js"></script>
+</body>
+</html>

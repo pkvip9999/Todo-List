@@ -1,0 +1,118 @@
+body{
+    background: #e9e9e9;
+    padding-top: 100px;
+}
+.wrapper{
+    background: #fefefe;
+    margin: 0 auto;
+    width:550px
+}
+.container{
+    border: 1px burlywood solid;
+    padding: 15px;
+}
+ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+li{
+    border-top: 1px burlywood solid ;
+}
+#text{
+    border: none;
+    font-size: 24px;
+    padding: 15px;
+    width: 100%;
+}
+#select-all{
+    margin-top: 15px;
+    font-size: 30px;
+
+}
+.select-all{
+    color: #e9e9e9;
+}
+.non{
+    color: #fefefe;
+    cursor: auto;
+}
+.select{
+    margin-top: 7px;
+    font-size: 30px;
+    border-radius: 100px;
+}
+.row{
+    display: flex;
+    flex-direction: row;
+}
+.cont{
+    padding: 15px;
+    width: 100%;
+}
+
+#edit{
+    padding: 15px;
+    width: 95%;
+    margin-left: 5%;
+    font-size: 24px;
+}
+.items{
+    font-size: 24px;
+}
+.delete{
+    text-align: right;
+    margin-top: 15px;
+    color: #fefefe;
+}
+.item:hover i{
+    color: brown;
+}
+.footer{
+    border-top: 1px burlywood solid;
+    font-size: 14px;
+    height: 35px;
+    padding-top: 15px;
+}
+.flex-1{
+    flex: 1;
+    margin: 0 10px;
+}
+.clear-completed{
+    text-align: right;
+}
+.border{
+    border: 1px brown solid ;
+    border-radius: 3px;
+    padding: 0 4px;
+}
+.border-non{
+    border: 1px #fefefe solid ;
+    border-radius: 3px;
+    padding: 0 4px;
+}
+.border-non:hover{
+    border: 1px burlywood solid ;
+    border-radius: 3px;
+}
+
+#all:hover ,#active:hover ,#completed:hover ,.clear-completed{
+    cursor: pointer;
+}
+.total{
+    cursor: default;
+}
+.total ,#all ,#active ,#completed ,.clear-completed {
+    height: 20px;
+    line-height: 20px;
+}
+.check{
+    color: #e9e9e9;
+    text-decoration: line-through;
+}
+.display{
+    display: none;
+}
+
+
+
