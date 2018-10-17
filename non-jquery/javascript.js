@@ -6,7 +6,8 @@ var completed = document.getElementById("completed");
 var clear = document.getElementById("clear-completed");
 var all = document.getElementById("all");
 var footer = document.getElementById("footer");
-var k;
+var ctnall = document.getElementById("ctn-all");
+var z="";
 
 
 
@@ -29,13 +30,13 @@ function border(id) {
     var a = document.getElementById(id);
     a.classList.add("border");
     a.classList.remove('border-non');
-    k = id;
+    z = id;
 }
 
 function hint() {
     if (arrayTodo.length == 0) {
         selectall.classList.add("non");
-        footer.classList.add("display")
+        footer.classList.add("display");
     } else {
         selectall.classList.remove("non");
         footer.classList.remove("display");
@@ -53,7 +54,7 @@ function ht() {
     }
     if (document.getElementsByClassName("check").length) {
         clear.innerHTML = "clear completed";
-        clear.classList.add("clear-completed")
+        clear.classList.add("clear-completed");
     }
     else {
         clear.innerHTML = "";
@@ -81,7 +82,16 @@ function Add(event) {
             addTodo(text);
             ht();
             hint();
-            border("all");
+            if(z=="" || z== "all"){
+                border("all");
+            }
+            else if (z == "active") {
+                act();
+
+            }
+            else comp();
+
+
         }
     }
 }
@@ -92,18 +102,20 @@ todolist.onclick = function (event){
    if (a.tagName == "INPUT") {
         if (a.checked) {
             b.classList.add("check");
-            if( k == "active"){
+            if( z == "active"){
                 act();
             }
+            hint();
             ht();
 
         }
         else {
             b.classList.remove("check");
             arrayTodo =todolist.children;
-            if (k == "completed") {
+            if (z == "completed") {
                 comp();
             }
+            hint();
             ht();
 
         }
@@ -115,27 +127,38 @@ todolist.onclick = function (event){
     }
 };
 selectall.onclick = function () {
-    if (dem(arrayTodo) == 0 ){
-        for (var i = 0; i < arrayTodo.length; i++) {
-            arrayTodo[i].children[0].checked=false;
-            arrayTodo[i].classList.remove("check");
-
-        }
-        ht();
-    }
-    else {
-        for (var i = 0; i < arrayTodo.length; i++) {
-            if (!arrayTodo[i].children[0].checked){
-                arrayTodo[i].children[0].checked=true;
-                arrayTodo[i].classList.add("check");
+        if (dem(arrayTodo) == 0 ){
+            for (var i = 0; i < arrayTodo.length; i++) {
+                arrayTodo[i].children[0].checked=false;
+                arrayTodo[i].classList.remove("check");
             }
+            hint();
+            ht();
         }
-        ht();
+        else {
+            for (var i = 0; i < arrayTodo.length; i++) {
+                if (!arrayTodo[i].children[0].checked){
+                    arrayTodo[i].children[0].checked=true;
+                    arrayTodo[i].classList.add("check");
+                }
+            }
+            hint();
+            ht();
+        }
+
+    if (z == "active") {
+        act();
+        ctnall.classList.add("display")
+    }
+    if (z == "completed") {
+        comp();
+        ctnall.classList.add("display")
     }
 };
 
 all.onclick = function () {
     border("all");
+    ctnall.classList.remove("display");
     for (var i = 0; i < arrayTodo.length; i++) {
             arrayTodo[i].classList.remove("display");
     }
@@ -144,31 +167,43 @@ all.onclick = function () {
 
 function act() {
     border("active");
+    ctnall.classList.remove("display");
+    var t=0;
     for (var i = 0; i < arrayTodo.length; i++) {
         if (arrayTodo[i].children[0].checked){
             arrayTodo[i].classList.add("display");
+
         }
         else {
             arrayTodo[i].classList.remove("display");
+            t++;
         }
+    }
+    if (t==0) {
+        ctnall.classList.add("display");
     }
 
 
 }
 
 
-
 function comp() {
     border("completed");
+    ctnall.classList.remove("display");
+    var t=0;
     for (var i = 0; i < arrayTodo.length; i++) {
         if (!arrayTodo[i].children[0].checked){
             arrayTodo[i].classList.add("display");
+
         }
         else {
             arrayTodo[i].classList.remove("display");
+            t++
         }
     }
-
+    if (t==0) {
+        ctnall.classList.add("display");
+    }
 }
 
 
