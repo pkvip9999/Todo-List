@@ -11,5 +11,6 @@ Thực hiện bởi [Phạm Hữu Thưởng](https://github.com/pkvip9999)
 ## Liên kết
 
 - [non-jquery](https://pkvip9999.github.io/todo-list/non-jquery)
+- [jquery](https://pkvip9999.github.io/todo-list/jquery)
 
 

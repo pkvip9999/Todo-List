@@ -41,7 +41,6 @@ function hint() {
         selectall.classList.remove("non");
         footer.classList.remove("display");
     }
-
 }
 function ht() {
     total = dem(arrayTodo);
@@ -87,11 +86,8 @@ function Add(event) {
             }
             else if (z == "active") {
                 act();
-
             }
             else comp();
-
-
         }
     }
 }
@@ -105,9 +101,6 @@ todolist.onclick = function (event){
             if( z == "active"){
                 act();
             }
-            hint();
-            ht();
-
         }
         else {
             b.classList.remove("check");
@@ -115,10 +108,9 @@ todolist.onclick = function (event){
             if (z == "completed") {
                 comp();
             }
-            hint();
-            ht();
-
         }
+       hint();
+       ht();
     }
     if (a.tagName == "I") {
         todolist.removeChild(b);
@@ -132,8 +124,16 @@ selectall.onclick = function () {
                 arrayTodo[i].children[0].checked=false;
                 arrayTodo[i].classList.remove("check");
             }
-            hint();
-            ht();
+            if (z == "completed") {
+                comp();
+            }
+        }
+        else if (z == "completed"){
+            for (var i = 0; i < arrayTodo.length; i++) {
+                arrayTodo[i].children[0].checked=false;
+                arrayTodo[i].classList.remove("check");
+            }
+            comp();
         }
         else {
             for (var i = 0; i < arrayTodo.length; i++) {
@@ -142,18 +142,14 @@ selectall.onclick = function () {
                     arrayTodo[i].classList.add("check");
                 }
             }
-            hint();
-            ht();
         }
-
+    hint();
+    ht();
     if (z == "active") {
         act();
         ctnall.classList.add("display")
     }
-    if (z == "completed") {
-        comp();
-        ctnall.classList.add("display")
-    }
+
 };
 
 all.onclick = function () {
